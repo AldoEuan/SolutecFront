@@ -1,0 +1,90 @@
+h1{
+    color: #fff ;
+}
+*{
+    font-family: "Poppins", sans-serif;
+     
+    font-style: normal;
+}
+    body {
+      background-color: #000000;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 4rem;
+      background-color: #000000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .btn-explorer {
+      background-color: #ff3d58;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem;
+      flex-wrap: wrap;
+      background-color: #000000;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    .highlight {
+      color: #ff3d58;
+      text-decoration: underline;
+    }
+
+    .hero-text p {
+      margin: 1.5rem 0;
+      color: #ccc;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-outline {
+      padding: 0.7rem 1.2rem;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .hero-image img {
+      max-width: 500px;
+    }

@@ -17,6 +17,7 @@ h1{
       justify-content: space-between;
       align-items: center;
       padding: 2rem 4rem;
+      
       background-color: #000000;
     }
 
@@ -61,8 +62,7 @@ h1{
     }
 
     .highlight {
-      color: #ff3d58;
-      text-decoration: underline;
+      color: #ff3d58; 
     }
 
     .hero-text p {

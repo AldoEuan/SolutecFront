@@ -35,6 +35,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-dark-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -70,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SolutecFront:build:production"
+              "buildTarget": "SolutecFront:build:production"
             },
             "development": {
-              "browserTarget": "SolutecFront:build:development"
+              "buildTarget": "SolutecFront:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SolutecFront:build"
+            "buildTarget": "SolutecFront:build"
           }
         },
         "test": {

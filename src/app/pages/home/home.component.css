@@ -1,3 +1,18 @@
+@media (width <860px){
+.hero-image{
+  visibility: hidden;
+}
+.navbar{
+  visibility: hidden;
+}
+}
+@media (max-width: 368px) {
+  .logotipo {
+    margin-top: 50px;
+    width: 200px;
+  }
+}
+
 .home {
   background-color: #000000;
   border-radius: 15px;
@@ -90,9 +105,3 @@ nav a {
   cursor: pointer;
 }
 
-@media (max-width: 368px) {
-  .logotipo {
-    margin-top: 50px;
-    width: 200px;
-  }
-}

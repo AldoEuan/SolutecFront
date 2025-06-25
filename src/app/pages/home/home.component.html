@@ -1,16 +1,29 @@
- <div class="home">
+<div class="home">
   <header>
     <div class="logo">SOLUTEC</div>
     <nav class="navbar">
-      <a href="#">Inicio</a>
-      <a href="#">Sobre mí</a>
-      <a href="#">Servicios</a>
-      <a href="#">Consejos</a>
-      <a href="#">Portafolio</a>
+      <a href="#inicio" (click)="scrollToSection('inicio')">Inicio</a>
+      <a href="#sobre-mi" (click)="scrollToSection('sobre-mi')">Sobre mí</a>
+      <a href="#servicios" (click)="scrollToSection('servicios')">Servicios</a>
+      <a href="#consejos" (click)="scrollToSection('consejos')">Consejos</a>
+      <a href="#portafolio" (click)="scrollToSection('portafolio')">Portafolio</a>
     </nav>
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <i class="pi pi-bars"></i>
+    </button>
   </header>
 
-  <section class="hero">
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.active]="mobileMenuOpen">
+    <a href="#inicio" (click)="scrollToSection('inicio'); closeMobileMenu()">Inicio</a>
+    <a href="#sobre-mi" (click)="scrollToSection('sobre-mi'); closeMobileMenu()">Sobre mí</a>
+    <a href="#servicios" (click)="scrollToSection('servicios'); closeMobileMenu()">Servicios</a>
+    <a href="#consejos" (click)="scrollToSection('consejos'); closeMobileMenu()">Consejos</a>
+    <a href="#portafolio" (click)="scrollToSection('portafolio'); closeMobileMenu()">Portafolio</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
     <div class="hero-text">
       <h1 id="chars">
         Calidad, confianza y tecnología en cada
@@ -21,55 +34,267 @@
         especialidad técnica en informática.
       </p>
       <div class="actions">
-        <button class="btn-explorer">
+        <button class="btn-explorer" (click)="openWhatsApp()">
           Contactar <i class="pi pi-whatsapp"></i>
         </button>
-        <button class="btn-outline">▶ Explorar Servicios</button>
+        <button class="btn-outline" (click)="scrollToSection('servicios')">
+          ▶ Explorar Servicios
+        </button>
       </div>
     </div>
     <div class="hero-image">
       <img
         class="logotipo"
         src="../../../assets/logotipo.png"
-        alt="Logotipo"
+        alt="Logotipo SOLUTEC"
       />
     </div>
   </section>
+
+  <!-- About Section -->
+  <section id="sobre-mi" class="about-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sobre Mí</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Ingeniero en Sistemas Computacionales</h3>
+          <p>
+            Con más de 5 años de experiencia en el desarrollo de soluciones tecnológicas 
+            innovadoras, me especializo en crear sistemas robustos y eficientes que 
+            impulsan el crecimiento de las empresas.
+          </p>
+          <div class="skills">
+            <div class="skill-item">
+              <i class="pi pi-code"></i>
+              <span>Desarrollo Web</span>
+            </div>
+            <div class="skill-item">
+              <i class="pi pi-mobile"></i>
+              <span>Apps Móviles</span>
+            </div>
+            <div class="skill-item">
+              <i class="pi pi-database"></i>
+              <span>Bases de Datos</span>
+            </div>
+            <div class="skill-item">
+              <i class="pi pi-cloud"></i>
+              <span>Cloud Computing</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <h4>50+</h4>
+            <p>Proyectos Completados</p>
+          </div>
+          <div class="stat-item">
+            <h4>5+</h4>
+            <p>Años de Experiencia</p>
+          </div>
+          <div class="stat-item">
+            <h4>100%</h4>
+            <p>Satisfacción del Cliente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicios" class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestros Servicios</h2>
+        <div class="section-line"></div>
+        <p>Soluciones tecnológicas integrales para tu negocio</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" *ngFor="let service of services">
+          <div class="service-icon">
+            <i [class]="service.icon"></i>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <ul>
+            <li *ngFor="let feature of service.features">{{ feature }}</li>
+          </ul>
+          <button class="service-btn" (click)="openWhatsApp(service.title)">
+            Solicitar Cotización
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips Section -->
+  <section id="consejos" class="tips-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Consejos Tecnológicos</h2>
+        <div class="section-line"></div>
+        <p>Tips y mejores prácticas para optimizar tu tecnología</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card" *ngFor="let tip of tips">
+          <div class="tip-icon">
+            <i [class]="tip.icon"></i>
+          </div>
+          <h3>{{ tip.title }}</h3>
+          <p>{{ tip.description }}</p>
+          <div class="tip-tags">
+            <span class="tag" *ngFor="let tag of tip.tags">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portafolio" class="portfolio-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Portafolio</h2>
+        <div class="section-line"></div>
+        <p>Algunos de nuestros proyectos más destacados</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item" *ngFor="let project of portfolio">
+          <div class="portfolio-image">
+            <img [src]="project.image" [alt]="project.title">
+            <div class="portfolio-overlay">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.category }}</p>
+              <div class="portfolio-actions">
+                <button class="portfolio-btn" (click)="viewProject(project)">
+                  <i class="pi pi-eye"></i>
+                </button>
+                <button class="portfolio-btn" (click)="openWhatsApp('Proyecto: ' + project.title)">
+                  <i class="pi pi-whatsapp"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <h4>{{ project.title }}</h4>
+            <p>{{ project.description }}</p>
+            <div class="tech-stack">
+              <span class="tech-tag" *ngFor="let tech of project.technologies">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>¿Listo para comenzar tu proyecto?</h2>
+        <div class="section-line"></div>
+        <p>Contáctanos y hagamos realidad tu idea</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="pi pi-whatsapp"></i>
+            <div>
+              <h4>WhatsApp</h4>
+              <p>+52 123 456 7890</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="pi pi-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>contacto@solutec.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="pi pi-map-marker"></i>
+            <div>
+              <h4>Ubicación</h4>
+              <p>Ciudad de México, México</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form (ngSubmit)="sendMessage()" #contactForm="ngForm">
+            <div class="form-group">
+              <input 
+                type="text" 
+                placeholder="Tu nombre" 
+                [(ngModel)]="contactData.name"
+                name="name"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <input 
+                type="email" 
+                placeholder="Tu email" 
+                [(ngModel)]="contactData.email"
+                name="email"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <input 
+                type="tel" 
+                placeholder="Tu teléfono" 
+                [(ngModel)]="contactData.phone"
+                name="phone"
+              >
+            </div>
+            <div class="form-group">
+              <textarea 
+                placeholder="Cuéntanos sobre tu proyecto" 
+                [(ngModel)]="contactData.message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn" [disabled]="!contactForm.form.valid">
+              Enviar Mensaje <i class="pi pi-send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>SOLUTEC</h3>
+          <p>Soluciones tecnológicas innovadoras para tu negocio</p>
+        </div>
+        <div class="footer-links">
+          <h4>Enlaces</h4>
+          <a href="#inicio" (click)="scrollToSection('inicio')">Inicio</a>
+          <a href="#sobre-mi" (click)="scrollToSection('sobre-mi')">Sobre mí</a>
+          <a href="#servicios" (click)="scrollToSection('servicios')">Servicios</a>
+          <a href="#portafolio" (click)="scrollToSection('portafolio')">Portafolio</a>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="pi pi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="pi pi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="pi pi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="pi pi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SOLUTEC. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
 </div>
-
-
-
- <!--
-<div class="home">
-<header>
-  
-<div class="logo">SOLUTEC</div>
-  
-<nav class="navbar">
-  <a href="#">Inicio</a>
-  <a href="#">Sobre mí</a>
-  <a href="#">Servicios</a>
-  <a href="#">Consejos </a>
-  <a href="#">Portafolio</a>
-</nav>
- 
- 
-</header>
-
-<section class="hero">
-<div class="hero-text"> 
-  <h1 id="chars">Calidad, confianza y tecnología en cada  <span class="highlight"></span> <span class="highlight">solución que brindamos</span></h1>
-  <p>Atención profesional respaldada por un Ingeniero en Sistemas con especialidad técnica en informática.</p>
-  <div class="actions"> 
-    <button class="btn-explorer">Contactar 
-      <i class="pi pi-whatsapp"></i> </button>
-    <button class="btn-outline">▶ Explorar Servicios</button>
-  </div>
-</div>
-<div class="hero-image">
-  <img class="logotipo" src="../../../assets/logotipo.png" alt="Logotipo">
-</div>
-</section>
-</div>
-
- -->
